@@ -11,11 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('usuarios', function (Blueprint $table) {
-            $table->bigIncrements("id");
-            $table->string("nome", 150);
-            $table->string("login", 20);
-            $table->string("senha", 20);
+        Schema::create('produtos', function (Blueprint $table) {
+            $table->id();
+            $table->string('nome');
+            $table->text('descricao');
+            $table->integer('quantidade_estoque');
+            $table->decimal('valor', 8, 2);
+            $table->string('categoria');
+            $table->string('estado_origem');
             $table->timestamps();
         });
     }
@@ -25,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('usuarios');
+        Schema::dropIfExists('produtos');
     }
 };
